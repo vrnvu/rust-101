@@ -25,5 +25,5 @@ mod part15;
 mod part16;
 
 fn main() {
-   part03::main();
+   part05::clone_demo();
 }

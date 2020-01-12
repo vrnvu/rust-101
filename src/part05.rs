@@ -3,7 +3,7 @@
 
 // ## Big Numbers
 
-
+#[derive(Clone)]
 pub struct BigInt {
     pub data: Vec<u64>, // least significant digit first, no trailing zeros
 }
@@ -12,9 +12,9 @@ pub struct BigInt {
 impl BigInt {
     pub fn new(x: u64) -> Self {
         if x == 0 {
-            unimplemented!()
+            BigInt { data: vec![]}
         } else {
-            unimplemented!()
+            BigInt { data: vec![x]}
         }
     }
 
@@ -22,7 +22,7 @@ impl BigInt {
         if self.data.len() == 0 {
             true
         } else {
-            unimplemented!()
+            self.data[self.data.len() - 1] != 0
         }
     }
 
@@ -36,28 +36,38 @@ impl BigInt {
     // 
     // *Hint*: You can use `pop` to remove the last element of a vector.
     pub fn from_vec(mut v: Vec<u64>) -> Self {
-        unimplemented!()
+        let mut big_int = BigInt::new(0);
+        while v.len() > 0 {
+            let element = v.pop().unwrap();
+            big_int.data.insert(0, element)
+        }
+        big_int
     }
 }
 
 // ## Cloning
-fn clone_demo() {
+pub fn clone_demo() {
     let v = vec![0,1 << 16];
-    let b1 = BigInt::from_vec((&v).clone());
+    let b1 = BigInt::from_vec(v.clone());
     let b2 = BigInt::from_vec(v);
 }
 
+/* #[derive(Clone)]
 impl Clone for BigInt {
     fn clone(&self) -> Self {
-        unimplemented!()
+        BigInt { data: self.data.clone() }
     }
 }
+*/
 
 // We can also make the type `SomethingOrNothing<T>` implement `Clone`.
 use part02::{SomethingOrNothing,Something,Nothing};
 impl<T: Clone> Clone for SomethingOrNothing<T> {
     fn clone(&self) -> Self {
-        unimplemented!()
+        match *self {
+            Nothing => Nothing,
+            Something(ref v) => Something(v.clone()),
+        }
     }
 }
 
