@@ -43,6 +43,20 @@ impl BigInt {
         }
         big_int
     }
+
+    pub fn number_digits(&self) -> usize {
+        self.data.len()
+    }
+
+    pub fn non_zero_digits(&self) -> u64 {
+        let mut count: u64 = 0;
+        for e in self.data.iter() {
+            if *e != 0 {
+                count += 1;
+            } 
+        }
+        count
+    }
 }
 
 // ## Cloning
