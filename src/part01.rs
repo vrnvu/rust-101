@@ -26,7 +26,7 @@ fn number_or_default(n: NumberOrNothing, default: i32) -> i32 {
 
 // It is even the case that blocks are expressions, evaluating to the last expression they contain.
 fn compute_stuff(x: i32) -> i32 {
-    let y = { let z = x*x; z + 14 };
+    let y = { let z = x * x; z + 14 };
     y*y
 }
 

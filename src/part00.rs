@@ -38,11 +38,7 @@ fn vec_min(vec: Vec<i32>) -> NumberOrNothing {
 
 // Now that we reduced the problem to computing the minimum of two integers, let's do that.
 fn min_i32(a: i32, b: i32) -> i32 {
-    if a < b {
-        a
-    } else {
-        b
-    }
+    if a < b { a } else { b }
 }
 
 // Phew. We wrote our first Rust function! But all this `NumberOrNothing::` is getting kind of

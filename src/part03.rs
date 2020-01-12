@@ -23,13 +23,8 @@ fn read_vec() -> Vec<i32> {
         // Now that we have our `String`, we want to make it an `i32`.
 
         match line.trim().parse::<i32>() {
-            Ok(num) => {
-                vec.push(num)
-            },
-            // We don't care about the particular error, so we ignore it with a `_`.
-            Err(_) => {
-                println!("Error parsing")
-            },
+            Ok(num) => { vec.push(num) },
+            Err(_) => { println!("Error parsing") },
         }
     }
 

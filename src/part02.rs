@@ -59,21 +59,13 @@ pub fn vec_min<T: Minimum>(v: Vec<T>) -> SomethingOrNothing<T> {
 // To make `vec_min` usable with a `Vec<i32>`, we implement the `Minimum` trait for `i32`.
 impl Minimum for i32 {
     fn min(self, b: Self) -> Self {
-        if self < b {
-            self
-        } else {
-            b
-        }
+        if self < b { self } else { b }
     }
 }
 
 impl Minimum for f32 {
     fn min(self, b: Self) -> Self {
-        if self < b {
-            self
-        } else {
-            b
-        }
+        if self < b { self } else { b }
     }
 }
 
