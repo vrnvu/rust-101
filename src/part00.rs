@@ -57,22 +57,16 @@ use self::NumberOrNothing::{Number,Nothing};
 // a list of numbers, but for now, let's just hard-code something.
 
 fn read_vec() -> Vec<i32> {
-    vec![3, 5]
+    vec![3, 5, -2]
 }
 
 // Of course, we would also like to actually see the result of the computation, so we need to print the result.
 
 fn print_number_or_nothing(n: NumberOrNothing) {
     match n {
-        NumberOrNothing::Nothing => {
-            println!("Number: Nothing")
-        },
-        // In this arm, `min` is currently the number `n`, so let's compute the new minimum and
-        // store it.
-        NumberOrNothing::Number(n) => {
-            println!("Number: {}", n)
-        }
-    }
+        Nothing => println!("Number: Nothing"),
+        Number(n) => println!("Number: {}", n),
+    };
 }
 
 // Putting it all together:
