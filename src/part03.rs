@@ -9,7 +9,7 @@ use std::io::prelude::*;
 use std::io;
 
 fn read_vec() -> Vec<i32> {
-    let mut vec: Vec<i32> = Vec::<i32>::new();
+    let mut vec: Vec<i32> = Vec::new();
     // The central handle to the standard input is made available by the function `io::stdin`.
     let stdin = io::stdin();
     println!("Enter a list of numbers, one per line. End with Ctrl-D (Linux) or Ctrl-Z (Windows).");
@@ -24,11 +24,11 @@ fn read_vec() -> Vec<i32> {
 
         match line.trim().parse::<i32>() {
             Ok(num) => {
-                unimplemented!()
+                vec.push(num)
             },
             // We don't care about the particular error, so we ignore it with a `_`.
             Err(_) => {
-                unimplemented!()
+                println!("Error parsing")
             },
         }
     }
@@ -44,7 +44,8 @@ use part02::{SomethingOrNothing,Something,Nothing,vec_min};
 // and tell you the minimum. Neat, isn't it?
 pub fn main() {
     let vec = read_vec();
-    unimplemented!()
+    let min = vec_min(vec);
+    min.print2();
 }
 
 // **Exercise 03.1**: Define a trait `Print` to write a generic version of
@@ -61,13 +62,29 @@ pub fn main() {
 // *Hint*: There is a macro `print!` for printing without appending a newline.
 pub trait Print {
     /* Add things here */
+    fn print2(self);
 }
+
+impl Print for i32 {
+    fn print2(self) {
+        print!("{}", self);
+    }
+}
+
 impl<T: Print> SomethingOrNothing<T> {
     fn print2(self) {
-        unimplemented!()
+        match self {
+            Nothing => println!("The number is: <nothing>"),
+            Something(n) => n.print2(),
+        };
     }
 }
 
 // **Exercise 03.2**: Building on exercise 02.2, implement all the things you need on `f32` to make
 // your program work with floating-point numbers.
 
+impl Print for f32 {
+    fn print2(self) {
+        print!("{}", self);
+    }
+}

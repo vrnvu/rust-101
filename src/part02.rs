@@ -10,7 +10,7 @@ pub enum SomethingOrNothing<T>  {
 }
 // Instead of writing out all the variants, we can also just import them all at once.
 pub use self::SomethingOrNothing::*;
-type NumberOrNothing = SomethingOrNothing<f32>;
+type NumberOrNothing = SomethingOrNothing<i32>;
 
 // ## Generic `impl`, Static functions
 // Inside an `impl`, `Self` refers to the type we are implementing things for. Here, it is
@@ -88,8 +88,8 @@ impl NumberOrNothing {
 }
 
 // Now we are ready to run our new code. Remember to change `main.rs` appropriately.
-fn read_vec() -> Vec<f32> {
-    vec![18.0,5.0,7.0,4.3,4.2,9.0,27.0]
+fn read_vec() -> Vec<i32> {
+    vec![18,5,7,49,27]
 }
 pub fn main() {
     let vec = read_vec();
