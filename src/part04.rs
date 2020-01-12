@@ -36,7 +36,7 @@ fn vec_min(v: &Vec<i32>) -> Option<i32> {
 }
 
 // Now that `vec_min` does not acquire ownership of the vector anymore, we can call it multiple times on the same vector and also do things like
-fn shared_ref_demo() {
+pub fn shared_ref_demo() {
     let v = vec![5,4,3,2,1];
     let first = &v[0];
     vec_min(&v);
@@ -71,4 +71,3 @@ fn mutable_ref_demo() {
 // As it turns out, combined with the abstraction facilities of Rust, this is a very powerful
 // mechanism to tackle many problems beyond basic memory safety. You will see some examples for
 // this soon.
-
